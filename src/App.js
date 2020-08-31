@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
-  
+
   const cardArr = ['🂠', '🂡', '🂢', '🂣', '🂤', '🂥', '🂦', '🂧', '🂸', '🂩', '🂪', '🂫', '🂬', '🂭', '🂮', '🂱', '🂲', '🂳', '🂴', '🂵', '🂷', '🂸', '🂹', '🂺', '🂻', '🂼', '🂼', '🃁', '🃂', '🃃', '🃄', '🃅', '🃆', '🃇', '🃉', '🃊', '🃋', '🃌', '🃍', '🃎', '🃑', '🃒', '🃓', '🃔', '🃕', '🃖', '🃗', '🃘', '🃙', '🃚', '🃛', '🃜', '🃝', '🃞', '🃟'];
  
   const [cards, setCards] = useState([
@@ -17,16 +16,14 @@ function App() {
   const buttonDown = () => {
     for(let i=0; i<3; i++){
       getRandomCard();
-      return <h1>randomCard</h1>
     }
-    
-
   }
 
-  const getRandomCard = () => {
+  const getRandomCard = (cards) => {
     let randomCard = cardArr[getRandomInt(cardArr.length)];
     console.log("clicked");
     console.log(randomCard);
+    setCards();
     return <h2>{randomCard}</h2>
   }
 
@@ -40,6 +37,7 @@ function App() {
         </h1>
         <span>
           <button onClick = {buttonDown}>start spinning</button>
+          <button onClick ={()=>setCards(getRandomCard)}>setState</button>
         </span>  
       </header>
       
