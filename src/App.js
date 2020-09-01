@@ -4,27 +4,29 @@ import './App.css';
 function App() {
 
   const cardArr = ['🂠', '🂡', '🂢', '🂣', '🂤', '🂥', '🂦', '🂧', '🂸', '🂩', '🂪', '🂫', '🂬', '🂭', '🂮', '🂱', '🂲', '🂳', '🂴', '🂵', '🂷', '🂸', '🂹', '🂺', '🂻', '🂼', '🂼', '🃁', '🃂', '🃃', '🃄', '🃅', '🃆', '🃇', '🃉', '🃊', '🃋', '🃌', '🃍', '🃎', '🃑', '🃒', '🃓', '🃔', '🃕', '🃖', '🃗', '🃘', '🃙', '🃚', '🃛', '🃜', '🃝', '🃞', '🃟'];
- 
+
   const [cards, setCards] = useState([
     ['a','b','c']
   ]);
 
-  const getRandomInt = max => {
-    return Math.floor(Math.random() * Math.floor(max));
+  const getRandomInt = (min,max) => {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
-  const buttonDown = () => {
+  const newCard = () => {
+    let randomNumber = getRandomInt(0, cardArr.length);
+    return cardArr[randomNumber];
+  }
+
+  const buttonDown = (cards) => {
+    let newCardArr = [];
     for(let i=0; i<3; i++){
-      getRandomCard();
+      newCardArr.push(newCard());
     }
-  }
-
-  const getRandomCard = (cards) => {
-    let randomCard = cardArr[getRandomInt(cardArr.length)];
-    console.log("clicked");
-    console.log(randomCard);
-    setCards();
-    return <h2>{randomCard}</h2>
+    console.log(newCardArr);
+    setCards([...newCardArr]);
   }
 
 
@@ -37,7 +39,6 @@ function App() {
         </h1>
         <span>
           <button onClick = {buttonDown}>start spinning</button>
-          <button onClick ={()=>setCards(getRandomCard)}>setState</button>
         </span>  
       </header>
       
