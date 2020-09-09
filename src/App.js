@@ -6,18 +6,18 @@ function App() {
   const cardArr = ['🂠', '🂡', '🂢', '🂣', '🂤', '🂥', '🂦', '🂧', '🂸', '🂩', '🂪', '🂫', '🂬', '🂭', '🂮', '🂱', '🂲', '🂳', '🂴', '🂵', '🂷', '🂸', '🂹', '🂺', '🂻', '🂼', '🂼', '🃁', '🃂', '🃃', '🃄', '🃅', '🃆', '🃇', '🃉', '🃊', '🃋', '🃌', '🃍', '🃎', '🃑', '🃒', '🃓', '🃔', '🃕', '🃖', '🃗', '🃘', '🃙', '🃚', '🃛', '🃜', '🃝', '🃞', '🃟'];
 
   const [cards, setCards] = useState([
-    ['a','b','c']
+    ['🂡 ','🂡 ','🂡']
   ]);
 
   const getRandomInt = (min,max) => {
     min = Math.ceil(min);
     max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+    return Math.floor(Math.random() * (max - min)) + min;
   }
 
   const newCard = () => {
     let randomNumber = getRandomInt(0, cardArr.length);
-    return cardArr[randomNumber];
+    return (cardArr[randomNumber] + ' ');
   }
 
   const buttonDown = (cards) => {
