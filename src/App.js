@@ -38,7 +38,7 @@ function App() {
           {cards}
         </h1>
         <span>
-          <button onClick = {buttonDown}>start spinning</button>
+          <button className="button" onClick = {buttonDown}>start spinning</button>
         </span>  
       </header>
       
